@@ -1,0 +1,75 @@
+
+/* ベースのスタイル
+------------------------------------------*/
+body {
+    font-family: "Noto Sans JP", serif;
+    font-weight: 400; /*regular */
+    font-style: normal;
+    font-size: 0.9375rem; /* 15px */
+    color: var(--color-black);
+}
+
+
+/* font family */
+.notosans {
+    font-family: "Noto Sans JP", serif;
+}
+
+.montserrat {
+    font-family: "Montserrat", serif;
+}
+
+/* font-weight
+--------------------------------------- */
+.fw-thin {
+    font-weight: 100;
+}
+
+.fw-extralight,
+.fw-ultralight {
+    font-weight: 200;
+}
+
+.fw-light {
+    font-weight: 300;
+}
+
+.fw-regular,
+.fw-normal {
+    font-weight: 400;
+}
+
+.fw-medium {
+    font-weight: 500;
+}
+
+.fw-semibold {
+    font-weight: 600;
+}
+
+.fw-bold {
+    font-weight: 700;
+}
+
+.fw-extra-bold {
+    font-weight: 800;
+}
+
+.fw-black,
+.fw-heavy {
+    font-weight: 900;
+}
+
+.italic {
+    font-style: italic;
+}
+
+
+/* リンク */
+a {
+    text-decoration: none;
+    color: var(--color-black);
+    cursor: pointer;
+    transition : all 0.3s ease;
+    display: inline-block;
+}

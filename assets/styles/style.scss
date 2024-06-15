@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+@use '../styles/sass/foundation/root' as *; 
+@use '../styles/sass/foundation/base' as *;
+@use '../styles/sass/foundation/variables' as *;
+@use '../styles/sass/foundation/mixins' as *;
+@use '../styles/sass/foundation/reset' as *;
+
+@use '../styles/sass/utilities/borders' as *;
+@use '../styles/sass/utilities/typography' as *;
+@use '../styles/sass/utilities/display' as *;
+
+@use '../styles/sass/projects/common' as *;
+@use '../styles/sass/projects/header' as *;
+@use '../styles/sass/projects/footer' as *;
+@use '../styles/sass/projects/top' as *; //トップページのスタイル
+@use '../styles/sass/projects/pages' as *; //下層ページ共通のスタイル
+@use '../styles/sass/projects/price' as *;
+@use '../styles/sass/projects/faq' as *;
+

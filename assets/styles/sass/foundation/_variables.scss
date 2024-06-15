@@ -1,0 +1,37 @@
+//変数の設定ファイル
+
+/* -------------------------------
+ * variables: screen size & breakpoint
+ * ---------------------------- */
+$screen-2xl: 1440 !default;
+$screen-xl: 1280 !default;
+$screen-lg: 992 !default;
+$screen-md: 768 !default;
+$screen-sm: 544 !default;
+$screen-xs: 480 !default;
+$screen-2xs: 360 !default;
+
+$breakpoint-list: (
+    switch: #{$screen-md},
+    2xs: #{$screen-2xs},
+    xs: #{$screen-xs},
+    sm: #{$screen-sm},
+    md: #{$screen-md},
+    lg: #{$screen-lg},
+    xl: #{$screen-xl},
+    2xl: #{$screen-2xl}) !default;
+
+/* -------------------------------
+ * variables: layer order
+ * ---------------------------- */
+$layer-order-list: (
+    default: 10,
+    header: 100,
+    alert: 200,
+    drawer: 300,
+    dialog: 400,
+    loading: 500) !default;
+
+@function layer-order($layer-order-key) {
+    @return #{map-get($layer-order-list, $layer-order-key)}
+}

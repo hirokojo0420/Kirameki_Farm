@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+/* -------------------------------
+ *  pc画面(768px以上）で非表示
+ * ---------------------------- */
+.pc-display-none {
+
+    @include media-query('md', max-width) {
+        display: block;
+    }
+
+    @include media-query('md', min-width) {
+        display: none;
+    }
+}
+
+/* -------------------------------
+ *  sp画面(768px未満）で非表示
+ * ---------------------------- */
+.sp-display-none {
+    @include media-query('md', max-width) {
+        display: none;
+    }
+
+    @include media-query('md', min-width) {
+        display: block;
+    }
+}

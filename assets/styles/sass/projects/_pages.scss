@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+@use '../foundation/root' as *;
+@use '../foundation/base' as *;
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+@use '../foundation/reset' as *;
+@use '../layout/header' as *;
+@use '../utilities/borders' as *;
+@use '../utilities/typography' as *;
+@use '../utilities/display.scss' as *;
+
+@use '../projects/top' as *;
+
+
+
+// 下層ページ共通
+/* -------------------------------
+ *  lower-page mainvisual
+ * ---------------------------- */
+
+.c-gnav_list a.link-current {
+    color: var(--color-primary);
+}
+
+.lower-page__mainvisual__container {
+    max-width: 1232px;
+}
+
+.lawer-page-mainvisual__imgWrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.lawer-page__title-box {
+    width: 327px;
+    height: 113px;
+    text-align: center;
+    align-content: center;
+    background-color: var(--color-white);
+
+    @include media-query('md', max-width) {
+        width: 100%;
+        height: auto;
+        text-align-last: left;
+        align-content: start;
+    }
+}
+
+.lawer-page__title {
+    font-size: 36px;
+
+    @include media-query('md', max-width) {
+        font-size: 30px;
+        margin-top: 22px;
+    }
+}
+
+.lawer-page-mainvisual__contents {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: end;
+    justify-items: start;
+    margin-top: 40px;
+
+    & .grid-item {
+        grid-area: 1/1;
+    }
+
+    @include media-query('md', max-width) {
+        display: block;
+        margin-top: 21px;
+    }
+}
+
+/* -------------------------------
+ *  lower-page breadcrumb
+ * ---------------------------- */
+.breadcrumb {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 16px;
+    list-style: none;
+    display: flex;
+    text-align: right;
+    justify-content: flex-end;
+
+    li {
+        display: inline;
+        padding-left: .2em;
+
+        @include media-query('md', max-width) {
+            padding-left: .2rem;
+        }
+    }
+
+    li a {
+        font-size: 12px;
+        padding-right: .2em;
+    }
+
+    li a:hover {
+        text-decoration: underline;
+    }
+
+    li a.link-current {
+        pointer-events: none;
+    }
+
+    li:not(:last-child):after {
+        content: '';
+        display: inline-block;
+        box-sizing: border-box;
+        width: 6px;
+        height: 6px;
+        border-style: solid;
+        border-width: var(--icon-border-width) var(--icon-border-width) 0 0;
+        border-color: var(--icon-color);
+        transform: rotate(45deg);
+
+    }
+
+
+}

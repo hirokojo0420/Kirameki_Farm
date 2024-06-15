@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+@use '../foundation/root' as *; //rootファイルの読み込み color css変数
+@use '../foundation/base' as *;
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+@use '../foundation/reset' as *;
+@use '../layout/header' as *;
+@use '../layout/footer' as *;
+// @use '../utilities/button' as *;
+@use '../utilities/borders' as *;
+@use '../utilities/typography' as *;
+@use '../utilities/_display.scss' as *;
+
+
+/* -------------------------------
+ *  footer
+ * ---------------------------- */
+
+.footer {
+    margin-top: 68px;
+    background-color: var(--color-primary);
+    height: 96px;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    text-align: center;
+
+    @include media-query('md', max-width) {
+        height: 68px;
+        margin-top: 58px;
+    }
+
+    li {
+        display: inline-block;
+        padding-right: 16px;
+        padding-left: 16px;
+
+        @include media-query('md', max-width) {
+            font-size: 13px;
+        }
+    }
+
+    li+li {
+        border-left: 1px solid var(--color-white);
+    }
+
+    a {
+        transition: all 0.5s;
+
+        &:hover {
+            text-decoration: underline
+        }
+    }
+}

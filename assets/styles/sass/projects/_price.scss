@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+@use '../foundation/root' as *; //rootファイルの読み込み color css変数
+@use '../foundation/base' as *;
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+@use '../foundation/reset' as *;
+@use '../utilities/borders' as *;
+@use '../utilities/typography' as *;
+@use '../utilities/display.scss' as *;
+
+
+@use '../layout/header' as *;
+@use '../layout/footer' as *;
+
+// @use '../projects/header' as *;
+@use '../projects/footer' as *;
+@use '../projects/top' as *;
+
+
+/* -------------------------------
+ *  page-price 内のスタイル
+ * ---------------------------- */
+
+.page-price__container {
+    width: 59.5%;
+    margin: 0 auto;
+    display: block;
+
+    @include media-query('md', max-width) {
+        width: 100%;
+    }
+}
+
+.page-price__subtitle {
+    width: 100%;
+    font-size: 1.75rem;
+    text-align: left;
+    justify-self: start;
+    display: block;
+
+    background-image: linear-gradient(90deg, var(--color-primary) 0 12.5%, var(--color-gray-ddd) 12.5%);
+    background-size: 100% 0.3125rem;
+    background-position: bottom;
+    margin-top: 2.1875rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+
+    @include media-query('md', max-width) {
+        font-size: 1.375rem;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: .5rem;
+    }
+}
+
+.page-price__imgWrapper {
+    overflow: hidden;
+}
+
+/* -------------------------------
+/*  gallery
+/* ---------------------------- */
+
+/* --------------------------------
+ *  gallery_slider splide の設定 
+/* ---------------------------- */
+
+// 矢印を消す
+.splide__arrow {
+    display: none;
+}
+
+// pagenationのスタイリング
+.gallery__slider .splide__pagination {
+    bottom: 22px;
+    gap: .5rem;
+
+    @include media-query('md', max-width) {
+        bottom: 8px;
+    }
+
+    &__page {
+        /* ページネーションの色を指定 */
+        background: var(--color-white);
+        width: 8px;
+        height: 8px;
+        margin: 0;
+    }
+
+    &__page.is-active {
+        /* ページネーションのサイズを統一 */
+        transform: scale(1);
+        background: var(--color-primary);
+
+        /* アクティブなページネーションの透過を無効にする */
+        opacity: 1;
+    }
+}
+
+/* -------------------------------
+ *  features
+ * ---------------------------- */
+.features {
+    margin-top: 26px;
+
+    @include media-query('md', max-width) {
+        margin-top: 42px;
+    }
+}
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    @include media-query('md', max-width) {
+        grid-template-columns: 1fr;
+        gap: 32px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.features li p {
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-left: 2px;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: justify;
+    letter-spacing: -0.03em;
+}
+
+/* -------------------------------
+ *  retail-price
+ * ---------------------------- */
+
+.retail-price {
+    margin-top: 21px;
+    margin-bottom: 21px;
+
+    @include media-query('md', max-width) {
+        margin-top: 38px;
+        margin-bottom: 42px;
+    }
+}
+
+.retail-price-num {
+    line-height: 32px;
+    font-size: 32px;
+}
+
+.retail-price-unit {
+    font-size: 16px;
+}
+
+/* -------------------------------
+ *  spec
+ * ---------------------------- */
+
+.spec__contents {
+    margin-top: 16px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    @include media-query('md', max-width) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.spec_tableTitle {
+    font-size: 24px;
+    border-left: 3px solid var(--color-primary);
+    padding-left: 16px;
+
+    @include media-query('md', max-width) {
+        font-size: 20px;
+    }
+}
+
+.spec__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 36px;
+    margin-bottom: 24px;
+    text-align: left;
+
+    @include media-query('md', max-width) {
+        margin-top: 18px;
+        margin-bottom: 16px;
+    }
+
+    th {
+        width: 28%;
+        background-color: #f5f5f5;
+        border: 1px solid var(--color-gray-ddd);
+
+        font-size: 16px;
+        padding: 18px;
+
+        @include  media-query('md', max-width) {
+            padding: 6px 16px;
+        }
+    }
+
+    td {
+        font-size: 16px;
+        padding: 12px;
+        border: 1px solid var(--color-gray-ddd);
+
+        @include media-query('md', max-width) {
+            padding: 6px 17px;
+        }
+    }
+
+    @include media-query('md', max-width) {
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+        }
+
+    }
+}
+
+/* -------------------------------
+ *  contact
+ * ---------------------------- */
+
+.contact {
+    margin-top: 58px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+
+    .grid-item {
+        grid-area: 1/1;
+        width: 100%;
+    }
+
+    @include media-query('md', max-width) {
+        margin-top: 65px;
+        margin-bottom: 0;
+    }
+}    
+
+.contact__btn {
+    display: inline-block;
+    width: 358px;
+    max-width: 100%;
+    text-align: center;
+    padding: 21px 87px;
+    border-radius: 9999px;
+    border: 2px solid var(--color-white);
+
+    color: var(--color-white);
+    font-size: 18px;
+    transition: all 0.3s ease;
+
+    @include hover-style {
+        background-color: var(--color-white);
+        color: var(--color-primary);
+    }
+
+    @include media-query('md', max-width) {
+        padding: 22px 20px;
+    }
+}
+
+/* -------------------------------
+ *  footer
+ * ---------------------------- */
+.page-price__footer {
+    margin-top: 0;
+}
+

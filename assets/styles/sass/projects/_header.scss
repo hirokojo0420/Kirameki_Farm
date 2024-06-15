@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+@use '../foundation/root' as *;
+@use '../foundation/base' as *;
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+@use '../foundation/reset' as *;
+@use '../layout/header' as *;
+@use '../layout/footer' as *;
+@use '../utilities/borders' as *;
+@use '../utilities/typography' as *;
+@use '../utilities/display.scss' as *;
+
+
+/* -------------------------------
+ *  header
+ * ---------------------------- */
+
+.header__logo {
+    display: inline-block;
+    width: 263px;
+
+    @include media-query('md', max-width) {
+        width: 197px;
+        height: auto;
+    }
+}
+
+/*-----------------------------------*/
+/* global nav  c-hamburger-btn
+/*-----------------------------------*/
+
+.c-gnav_list {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.c-gnav_list {
+    a {
+        color: #333;
+        font-size: 16px;
+        transition: all 0.5s;
+
+        @include hover-style {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+/*-----------------------------------*/
+
+@include media-query('md', max-width) {
+
+    /*========= ナビゲーションのCSS ===============*/
+    #gnav {
+        position: fixed;
+        z-index: layer-order('drawer');
+        /*ナビのスタート位置と形状*/
+        top: -120%;
+        left: 5%;
+        width: 90%;
+        height: 30%;
+        border-radius: 24px;
+        /*ナビの高さ*/
+        background: var(--color-primary);
+        transition: all 0.6s;
+    }
+
+    /*アクティブクラスがついたら位置をheader下に*/
+    #gnav.panelactive {
+        top: 63px;
+    }
+
+    /*ナビゲーション*/
+    #gnav ul {
+        /*ナビゲーション天地中央揃え*/
+        position: absolute;
+        // z-index: layer-order('drawer');
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /*リストのレイアウト設定*/
+    #gnav li {
+        list-style: none;
+        text-align: center;
+    }
+
+    #gnav li a {
+        color: var(--color-white);
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /*========= ボタンのためのCSS ===============*/
+    .c-hamburger-btn {
+        position: fixed;
+        z-index: layer-order('drawer') + 1;
+        // /*ボタンを最前面に*/
+        top: 10px;
+        right: 6px;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+    }
+
+    /*×に変化*/
+    .c-hamburger-btn span {
+        display: inline-block;
+        transition: all .4s;
+        position: absolute;
+        left: 14px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #666;
+        width: 45%;
+    }
+
+    .c-hamburger-btn span:nth-of-type(1) {
+        top: 15px;
+    }
+
+    .c-hamburger-btn span:nth-of-type(2) {
+        top: 23px;
+    }
+
+    .c-hamburger-btn span:nth-of-type(3) {
+        top: 31px;
+    }
+
+    .c-hamburger-btn.active span:nth-of-type(1) {
+        top: 18px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+    }
+
+    .c-hamburger-btn.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .c-hamburger-btn.active span:nth-of-type(3) {
+        top: 30px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+    }
+
+}
