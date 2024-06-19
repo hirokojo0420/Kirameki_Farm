@@ -59,8 +59,8 @@
         z-index: layer-order('drawer');
         /*ナビのスタート位置と形状*/
         top: -120%;
-        left: 5%;
-        width: 90%;
+        left: 16px;
+        width: calc(100% - 32px);
         height: 30%;
         border-radius: 24px;
         /*ナビの高さ*/
