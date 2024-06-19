@@ -389,8 +389,8 @@ h6 {
     z-index: 300;
     /*ナビのスタート位置と形状*/
     top: -120%;
-    left: 5%;
-    width: 90%;
+    left: 16px;
+    width: calc(100% - 32px);
     height: 30%;
     border-radius: 24px;
     /*ナビの高さ*/
@@ -873,29 +873,32 @@ h6 {
 .grid__item {
   border-radius: 24px;
   background-color: var(--color-primary);
+}
+.grid__item a {
+  text-decoration: none;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 @media (max-width: calc(768px - 1px)) {
-  .grid__item {
+  .grid__item a {
     gap: 16px;
   }
 }
-.grid__item.item-large1, .grid__item.item-large2 {
+.grid__item.item-large1 a, .grid__item.item-large2 a {
   font-size: 24px;
   padding: 22px 26px;
   line-height: 1.6;
   gap: 26px;
 }
-.grid__item.item-small1, .grid__item.item-small2, .grid__item.item-small3 {
+.grid__item.item-small1 a, .grid__item.item-small2 a, .grid__item.item-small3 a {
   font-size: 20px;
   padding: 22px 26px;
   line-height: 1.8;
   gap: 16px;
 }
 @media (max-width: calc(768px - 1px)) {
-  .grid__item.item-large1, .grid__item.item-large2, .grid__item.item-small1, .grid__item.item-small2, .grid__item.item-small3 {
+  .grid__item.item-large1 a, .grid__item.item-large2 a, .grid__item.item-small1 a, .grid__item.item-small2 a, .grid__item.item-small3 a {
     font-size: 18px;
     padding-top: 22px;
     padding-bottom: 22px;
@@ -960,6 +963,11 @@ h6 {
   .c-grid-link__list {
     grid-template-columns: 1fr;
   }
+}
+
+.c-grid-link__list a {
+  display: block;
+  text-decoration: none;
 }
 
 .grid-link__item__imgWrapper {
@@ -1254,6 +1262,8 @@ h6 {
 @media (max-width: calc(768px - 1px)) {
   .page-price__subtitle {
     font-size: 1.375rem;
+    background-image: linear-gradient(90deg, var(--color-primary) 0 14%, var(--color-gray-ddd) 14%);
+    background-size: 100% 0.1875rem;
     margin-top: 1rem;
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
@@ -1417,7 +1427,7 @@ h6 {
 }
 @media (max-width: calc(768px - 1px)) {
   .spec__table td {
-    padding: 6px 17px;
+    padding: 8px 17px;
   }
 }
 @media (max-width: calc(768px - 1px)) {
@@ -1425,6 +1435,10 @@ h6 {
 .spec__table td {
     display: block;
     width: 100%;
+    border-bottom: none;
+  }
+  .spec__table tr:last-child {
+    border-bottom: 1px solid var(--color-gray-ddd);
   }
 }
 
@@ -1443,7 +1457,7 @@ h6 {
 }
 @media (max-width: calc(768px - 1px)) {
   .contact {
-    margin-top: 65px;
+    margin-top: 48px;
     margin-bottom: 0;
   }
 }

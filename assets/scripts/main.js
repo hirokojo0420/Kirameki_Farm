@@ -2,7 +2,6 @@
 // ハンバーガーメニュー
 
 $(".c-hamburger-btn").click(function () {//ボタンがクリックされたら
-    console.log("hamberger clicked");
     $(this).toggleClass('active');//ボタンにactiveクラスを付与
     $("#gnav").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
 });
@@ -12,11 +11,20 @@ $("#gnav a").click(function () {//ナビゲーションのリンクがクリッ�
     $("#gnav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
 });
 
+$(document).on('click', function(e) { //画面上どこかがクリックされたら
+
+    if (!$(e.target).closest('#gnav').length) { //gnavの領域外か判定
+
+        //gnav領域外の場合、
+        $(".c-hamburger-btn").removeClass('active'); //ボタンのactiveクラスを除去
+        $("#gnav").removeClass('panelactive'); //ナビゲーションのpanelactiveクラスも除去
+    }
+});
+
 
 // スムーススクロール----------------------//
 // トップページでヘッダーロゴをクリック
 $('.scroll__header__logo').on('click', function (e) {
-    console.log("header logo clicked");
     e.preventDefault();
     $('body,html').animate({ scrollTop: 0 }, 400);
 });
