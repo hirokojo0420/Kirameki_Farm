@@ -87,7 +87,7 @@
 
     &__page {
         /* ページネーションの色を指定 */
-        background: var(--color-white);
+        background: var(--color-gray-eee);
         width: 8px;
         height: 8px;
         margin: 0;
@@ -156,6 +156,7 @@
 .retail-price-num {
     line-height: 32px;
     font-size: 32px;
+    color: var(--color-primary);
 }
 
 .retail-price-unit {
