@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@use '../foundation/root' as *; 
+@use '../foundation/root' as *;
 @use '../foundation/base' as *;
 @use '../foundation/variables' as *;
 @use '../foundation/mixins' as *;
@@ -32,24 +32,23 @@
     }
 }
 
-.l-accordion-title-area {
-    display: grid;
-    grid-template-columns: 38px 1fr auto;
-    grid-template-rows: auto 1fr;
-    align-items: center;
+/* --------アコーディオン -------- */
+// summary details全体のスタイル
+summary {
     cursor: pointer;
-
-    @include media-query ('md', max-width) {
-        column-gap: 7px;
-    }
-
-    .faq__q-text {
-        grid-column: 2 / 3;
-        grid-row: 2 / 3;
-    }
+    display: block;
 }
 
-.accordion_list-item {
+summary::-webkit-details-marker {
+    /* Safariで表示されるデフォルトの三角形アイコンを消す */
+    display: none;
+}
+
+details {
+    transition: all 0.3s;
+}
+
+details.c-accordion__item {
     border: 1px solid var(--color-gray-ccc);
     padding: 18px 32px 12px;
     margin-bottom: 19px;
@@ -60,7 +59,25 @@
     }
 }
 
-.faq__q-text {
+// summary内のスタイル
+.l-summary_inner {
+    display: grid;
+    grid-template-columns: 38px 1fr auto;
+    grid-template-rows: auto 1fr;
+    align-items: center;
+    cursor: pointer;
+
+    @include media-query ('md', max-width) {
+        column-gap: 7px;
+    }
+
+    .summary-title {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+}
+
+.summary-title {
     padding-top: 10px;
     padding-bottom: 12px;
     font-size: 18px;
@@ -72,12 +89,12 @@
     }
 }
 
-.qa-icon {
+.faq__qa-icon {
     color: var(--color-primary);
     font-size: 24px;
 }
 
-.faq-label-group {
+.faq__label-group {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -87,7 +104,7 @@
         background-color: var(--color-white);
         color: var(--color-primary);
         border: 1px solid var(--color-primary);
-        padding: 3px 12px;
+        padding: 3px 0;
         margin-left: 4px;
     }
 
@@ -99,32 +116,20 @@
     }
 }
 
-.accordion_icon-box {
-    width: 30px;
-    height: 30px;
+/* -----アコーディオンの中身のスタイル----- */
+details .content {
+    overflow: hidden;
 }
 
-.accordion-contents-area {
+details .content__text {
+    font-size: 16px;
+    line-height: 1.6;
     padding: 12px 0;
 
     @include media-query('md', max-width) {
-        padding: 0 0;
-    }
-}
-
-.faq__a__text {
-    font-size: 16px;
-    line-height: 1.6;
-
-    @include media-query('md', max-width) {
         line-height: 1.7;
-        padding-bottom: 12px;
+        padding: 0 0 12px 0;
     }
-}
-
-//アコーディオン下 初めは非表示
-.accordion-contents-area {
-    display: none;
 }
 
 //+-アイコン
@@ -135,32 +140,35 @@
     border-radius: 50%;
     position: relative;
     cursor: pointer;
+
+    &::before,
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 2px;
+        background-color: #666;
+        border-radius: 1px;
+        position: absolute;
+        left: 23%;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all .3s ease;
+    }
+
+    &::after {
+        transform: translateY(-50%) rotate(90deg);
+        transition: transform .3s ease;
+    }
 }
 
-.accordion-icon::before,
-.accordion-icon::after {
-    content: "";
-    display: inline-block;
-    width: 18px;
-    height: 2px;
-    background-color: #666;
-    border-radius: 1px;
-    position: absolute;
-    left: 23%; 
-    top: 50%; 
-    transform: translateY(-50%);
-    transition: opacity 1s;
-}
+/* is-openedクラスが付与されたときのスタイル （[open]だと動き始めが遅くなるため、タイミングの調整） */
+details.is-opened .accordion-icon {
+    &::before {
+        opacity: 0;
+    }
 
-.accordion-icon::after {
-    transform: translateY(-50%) rotate(90deg);
-    transition: transform 0.5s ease;
-}
-
-.accordion-icon.open::before {
-    opacity: 0;
-}
-
-.accordion-icon.open::after {
-    transform: translateY(-50%) rotate(180deg);
+    &::after {
+        transform: translateY(-50%) rotate(180deg);
+    }       
 }
